@@ -1,0 +1,13 @@
+{
+    "name": "carlosio/whatsapp",
+    "description": "WhatsApp PHP API",
+    "require": {
+        "symfony/console": "dev-master"
+    },
+    "authors": [
+        {
+            "name": "Carlos Buenosvinos",
+            "email": "hi@carlos.io"
+        }
+    ]
+}
