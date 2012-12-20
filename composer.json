@@ -1,8 +1,8 @@
 {
     "name": "carlosio/whatsapp",
-    "description": "WhatsApp PHP API",
+    "description": "A PHP library for sending WhatsApp messages",
     "require": {
-        "symfony/console": "dev-master"
+        "symfony/console": "2.1.4"
     },
     "authors": [
         {
