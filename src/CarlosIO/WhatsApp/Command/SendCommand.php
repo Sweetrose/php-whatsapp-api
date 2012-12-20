@@ -14,8 +14,6 @@ class SendCommand extends BaseCommand
     protected function configure()
     {
         parent::configure();
-        // php app/console carlosio:whatsapp:send 34659730605 351565053325764 "Carlos Buenosvinos" 34610338093 "Esto es un mensaje de prueba"
-        // php app/console carlosio:whatsapp:send 34659730605 351565053325764 "Carlos Buenosvinos" 34659730605 "Esto es un mensaje de prueba"
         $this
             ->setName('carlosio:whatsapp:send')
             ->setDescription('Send message to phone number')
