@@ -41,11 +41,15 @@ class Protocol
     protected $_debug;
 
     protected $_newmsgBind = false;
+    protected $_decode;
+    protected $_string;
 
     public function __construct($Number, $imei, $Nickname, $debug = false)
     {
+        $this->_decode = new Decode();
+        $this->_string = new String();
         $this->_debug = $debug;
-        $dict = getDictionary();
+        $dict = $this->_decode->getDictionary();
         $this->_writer = new BinTreeNodeWriter($dict);
         $this->_reader = new BinTreeNodeReader($dict);
         $this->_phoneNumber = $Number;
@@ -86,7 +90,7 @@ class Protocol
 
     protected function authenticate()
     {
-        $key = pbkdf2('sha1', $this->encryptPassword(), $this->challengeData, 16, 20, true);
+        $key = $this->_string->pbkdf2('sha1', $this->encryptPassword(), $this->challengeData, 16, 20, true);
         $this->_inputKey = new KeyStream($key);
         $this->_outputKey = new KeyStream($key);
         $array = $this->_phoneNumber.$this->challengeData.time();
@@ -295,7 +299,7 @@ class Protocol
         //echo "Received node!!\n";
     }
 
-    public function SendPresence($type='available')
+    public function SendPresence($type = 'available')
     {
         $presence = array();
         $presence['type'] = $type;
@@ -328,8 +332,9 @@ class Protocol
         if (!$this->_lastId) {
             $this->_lastId = $msgid;
             $this->sendNode($messsageNode);
-        }else
+        } else {
             $this->_outQueue[] = $messsageNode;
+        }
     }
 
     public function Message($to, $txt)

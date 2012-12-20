@@ -80,7 +80,9 @@ class ProtocolNode
             $parts[0] = time()+$offset;
             $this->_attributeHash['id'] = implode('-',$parts);
         }
-        if(isset($this->_attributeHash['t']))
+
+        if (isset($this->_attributeHash['t'])) {
             $this->_attributeHash['t'] = time();
+        }
     }
 }

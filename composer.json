@@ -9,5 +9,8 @@
             "name": "Carlos Buenosvinos",
             "email": "hi@carlos.io"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-0": {"CarlosIO": "src/"}
+    }
 }
