@@ -8,7 +8,7 @@ class Decode
         $hexarr = str_split($hex, 2);
         $str = null;
         foreach ($hexarr as $v) {
-            $str .= '  '.getToken(hexdec($v));
+            $str .= '  ' . getToken(hexdec($v));
         }
 
         return $str;

@@ -1,6 +1,7 @@
-#!/usr/bin/php
 <?php
-require "../src/php/whatsprot.class.php";
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+use CarlosIO\WhatsApp\Protocol;
 
 function fgets_u($pStdn) {
 	$pArr = array($pStdn);
@@ -14,9 +15,8 @@ function fgets_u($pStdn) {
 }
 
 $nickname = "WhatsAPI Test";
-$sender = 	""; // Mobile number with country code (but without + or 00)
-$imei = 	""; // MAC Address for iOS IMEI for other platform (Android/etc) 
-
+$sender =   "34659730605"; // Mobile number with country code (but without + or 00)
+$imei =     "351565053325764"; // MAC Address for iOS IMEI for other platform (Android/etc)
 
 $countrycode = substr($sender, 0, 2);
 $phonenumber=substr($sender, 2);
@@ -38,7 +38,7 @@ for ($i=3; $i<$argc; $i++) {
 }
 
 echo "[] Logging in as '$nickname' ($sender)\n";
-$wa = new WhatsProt($sender, $imei, $nickname, true);
+$wa = new Protocol($sender, $imei, $nickname, true);
 
 $url = "https://r.whatsapp.net/v1/exist.php?cc=".$countrycode."&in=".$phonenumber."&udid=".$wa->encryptPassword();
 $content = file_get_contents($url);
@@ -113,5 +113,3 @@ $wa->RequestLastSeen(time()."-1", $dst);
 echo "\n[] Send message to $dst: $msg\n";
 $wa->Message(time()."-1", $dst , $msg);
 echo "\n";
-
-?>

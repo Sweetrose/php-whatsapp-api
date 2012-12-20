@@ -8,7 +8,7 @@ class KeyStream
 
     public function __construct($key)
     {
-        $this->_rc4 = new RC4($key, 256);
+        $this->_rc4 = new Rc4($key, 256);
         $this->_key = $key;
     }
 
