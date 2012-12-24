@@ -3,7 +3,7 @@
     "type": "library",
     "description": "A PHP library for sending WhatsApp messages",
     "keywords": ["whatsapp", "api"],
-    "homepage": "https://github.com/carlosbuenosvinos/php-pingdom-api",
+    "homepage": "https://github.com/carlosbuenosvinos/php-whatsapp-api",
     "license": "MIT",
     "require": {
         "symfony/console": "2.1.*"
